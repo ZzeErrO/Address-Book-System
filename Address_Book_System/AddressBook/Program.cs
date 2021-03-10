@@ -13,11 +13,13 @@ namespace AddressBook
         public static int zip;
         public static int phone_number;
         public static string email;
+        public static string edit_First_Name;
+        public static string edit_Last_Name;
         static void Main(string[] args)
         {
             Console.WriteLine(" WELCOME TO ADDRESS BOOK SYSTEM PROGRAM \n");
 
-            Console.WriteLine(" How many people's Information is needed to be Added(Expected Integer): \n");
+            Console.WriteLine(" How many people's Information is needed to be Added(Expected Integer): ");
             int NUM_OF_PEOPLE = Convert.ToInt32(Console.ReadLine());
 
             AddContacts obj = new AddContacts();
@@ -44,6 +46,18 @@ namespace AddressBook
                 obj.Assign(first_Name, last_Name, address, city, state, zip, phone_number, email);
             }
             obj.Show();
+
+            Console.WriteLine("\n Do you want to edit any person Information then reply with 'y' or 'n': ");
+            string y_n = Console.ReadLine();
+            if (y_n == "y")
+            {
+                Console.WriteLine("Enter the first name of the person you want to edit information: ");
+                edit_First_Name = Console.ReadLine();
+                Console.WriteLine("Enter the first name of the person you want to edit information: ");
+                edit_Last_Name = Console.ReadLine();
+                obj.Edit(edit_First_Name, edit_Last_Name);
+                obj.Show();
+            }
             Console.ReadKey();
         }
     }

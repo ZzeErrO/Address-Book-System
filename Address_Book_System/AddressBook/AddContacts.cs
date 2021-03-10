@@ -43,5 +43,32 @@ namespace AddressBook
                 Console.WriteLine("The email of the person is: " + item.Email + "\n");
             }
         }
+
+        public void Edit(string edit_First_Name, string edit_Last_Name)
+        {
+            foreach (TakeContacts item1 in list)
+            {
+                if (item1.FirstName == edit_First_Name && item1.LastName == edit_Last_Name)
+                {
+                    //Console.WriteLine("ENTER THE NUMBER THAT YOU WANT TO EDIT");
+                    //switch () 
+                    //{
+                    //    case 
+                    //}
+                    Console.WriteLine("\n Write New Address of the person: ");
+                    item1.Address = Console.ReadLine();
+                    Console.WriteLine("\n Write New City of the person: ");
+                    item1.City = Console.ReadLine();
+                    Console.WriteLine("\n Write New State of the person: ");
+                    item1.State = Console.ReadLine();
+                    Console.WriteLine("\n Write New Zip of the person: ");
+                    item1.Zip = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\n Write New Phone number of the person: ");
+                    item1.Phone_number = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\n Write New Email of the person: ");
+                    item1.Email = Console.ReadLine();
+                }
+            }
+        }
     }
 }

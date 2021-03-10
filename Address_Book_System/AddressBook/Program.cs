@@ -15,6 +15,8 @@ namespace AddressBook
         public static string email;
         public static string edit_First_Name;
         public static string edit_Last_Name;
+        public static string delete_First_Name;
+        public static string delete_Last_Name;
         static void Main(string[] args)
         {
             Console.WriteLine(" WELCOME TO ADDRESS BOOK SYSTEM PROGRAM \n");
@@ -58,6 +60,19 @@ namespace AddressBook
                 obj.Edit(edit_First_Name, edit_Last_Name);
                 obj.Show();
             }
+
+            Console.WriteLine("\n Do you want to delete any person Information then reply with 'y' or 'n': ");
+            string y_n_1 = Console.ReadLine();
+            if (y_n_1 == "y")
+            {
+                Console.WriteLine("Enter the first name of the person you want to delete information: ");
+                delete_First_Name = Console.ReadLine();
+                Console.WriteLine("Enter the first name of the person you want to delete information: ");
+                delete_Last_Name = Console.ReadLine();
+                obj.delete(delete_First_Name, delete_Last_Name);
+                obj.Show();
+            }
+
             Console.ReadKey();
         }
     }

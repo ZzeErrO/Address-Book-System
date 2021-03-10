@@ -50,11 +50,6 @@ namespace AddressBook
             {
                 if (item1.FirstName == edit_First_Name && item1.LastName == edit_Last_Name)
                 {
-                    //Console.WriteLine("ENTER THE NUMBER THAT YOU WANT TO EDIT");
-                    //switch () 
-                    //{
-                    //    case 
-                    //}
                     Console.WriteLine("\n Write New Address of the person: ");
                     item1.Address = Console.ReadLine();
                     Console.WriteLine("\n Write New City of the person: ");
@@ -67,6 +62,18 @@ namespace AddressBook
                     item1.Phone_number = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("\n Write New Email of the person: ");
                     item1.Email = Console.ReadLine();
+                }
+            }
+        }
+
+        public void delete(string delete_First_Name, string delete_Last_Name)
+        {
+            foreach  (TakeContacts item2 in list)
+            {
+                if (item2.FirstName == delete_First_Name && item2.LastName == delete_Last_Name)
+                {
+                    list.Remove(item2);
+                    break;
                 }
             }
         }

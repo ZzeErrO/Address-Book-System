@@ -5,31 +5,45 @@ namespace AddressBook
 {
     class Program
     {
+        public static string first_Name;
+        public static string last_Name;
+        public static string address;
+        public static string city;
+        public static string state;
+        public static int zip;
+        public static int phone_number;
+        public static string email;
         static void Main(string[] args)
         {
             Console.WriteLine(" WELCOME TO ADDRESS BOOK SYSTEM PROGRAM \n");
 
-            Console.WriteLine("Write First Name of the person: ");
-            string first_Name = Console.ReadLine();
-            Console.WriteLine(" \n Write Last Name of the person: ");
-            string last_Name = Console.ReadLine();
-            Console.WriteLine("\n Write Address of the person: ");
-            string address = Console.ReadLine();
-            Console.WriteLine("\n Write City of the person: ");
-            string city = Console.ReadLine();
-            Console.WriteLine("\n Write State of the person: ");
-            string state = Console.ReadLine();
-            Console.WriteLine("\n Write Zip of the person: ");
-            int zip = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\n Write Phone_number of the person: ");
-            int phone_number = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\n Write Email of the person: ");
-            string email = Console.ReadLine();
+            Console.WriteLine(" How many people's Information is needed to be Added(Expected Integer): \n");
+            int NUM_OF_PEOPLE = Convert.ToInt32(Console.ReadLine());
 
             AddContacts obj = new AddContacts();
-            obj.Assign(first_Name, last_Name, address, city, state, zip, phone_number, email);
-            obj.Show();
 
+            for (int i = 1; i <= NUM_OF_PEOPLE; i++)
+            {
+                Console.WriteLine("\n Write First Name of the person: ");
+                first_Name = Console.ReadLine();
+                Console.WriteLine("\n Write Last Name of the person: ");
+                last_Name = Console.ReadLine();
+                Console.WriteLine("\n Write Address of the person: ");
+                address = Console.ReadLine();
+                Console.WriteLine("\n Write City of the person: ");
+                city = Console.ReadLine();
+                Console.WriteLine("\n Write State of the person: ");
+                state = Console.ReadLine();
+                Console.WriteLine("\n Write Zip of the person: ");
+                zip = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\n Write Phone_number of the person: ");
+                phone_number = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\n Write Email of the person: ");
+                email = Console.ReadLine();
+
+                obj.Assign(first_Name, last_Name, address, city, state, zip, phone_number, email);
+            }
+            obj.Show();
             Console.ReadKey();
         }
     }

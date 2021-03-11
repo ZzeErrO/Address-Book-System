@@ -6,9 +6,8 @@ namespace AddressBook
 {
     class AddContacts
     {
-        private List<TakeContacts> list = new List<TakeContacts>();
-        
-        public void Assign(string first_Name, string last_Name, string address, string city, string state, int zip, int phone_number, string email)
+        public List<TakeContacts> list = new List<TakeContacts>();
+        public void Assign(string address_Book, string first_Name, string last_Name, string address, string city, string state, int zip, int phone_number, string email)
         {
             TakeContacts class_object = new TakeContacts();
             class_object.FirstName = first_Name;
@@ -23,13 +22,14 @@ namespace AddressBook
             list.Add(class_object);
         }
 
-        public void Show()
+        public void Show(string address_Book)
         {
             int num = 0;
+            Console.WriteLine("\n   ADDRESS BOOK NAME " + address_Book);
             foreach (TakeContacts item in list)
             {
                 num++;
-                Console.WriteLine("\nPERSON " + num + " INFORMATION");
+                Console.WriteLine("\nPerson " + num + " Information");
 
                 Console.WriteLine("The first Name of person is: " + item.FirstName);
                 Console.WriteLine("The last name of the person is: " + item.LastName);

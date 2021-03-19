@@ -6,7 +6,7 @@ namespace AddressBook
 {
     class AddContacts
     {
-        int var = 1;
+        int var = 0;
         public List<TakeContacts> list = new List<TakeContacts>();
         public static Dictionary<string, TakeContacts> dictionary = new Dictionary<string, TakeContacts>();
         public void Assign(string address_Book, string first_Name, string last_Name, string address, string city, string state, int zip, int phone_number, string email)
@@ -23,6 +23,25 @@ namespace AddressBook
             list.Add(class_object);
             dictionary.Add(address_Book + " Person" + var,class_object);
             var++;
+        }
+
+        public void Check_Duplicate(string address_Book)
+        {
+            for (int temp = 0; temp < list.Count; temp++)
+            {
+                for (int i = temp; i < list.Count-1; i++)
+                {
+                    int j = i;
+                    j++;
+                    if (list[temp].FirstName == list[j].FirstName && list[temp].LastName == list[j].LastName)
+                    {
+                        Console.WriteLine("hello "+i);
+                        delete(list[j].FirstName, list[j].LastName);
+                        dictionary.Remove(address_Book + " Person" + j);
+                    }
+                    Console.WriteLine("hello "+i);
+                }
+            }
         }
 
         public void Show(string address_Book)
@@ -74,6 +93,7 @@ namespace AddressBook
                 if (item2.FirstName == delete_First_Name && item2.LastName == delete_Last_Name)
                 {
                     list.Remove(item2);
+                    Console.WriteLine("Element Removed");
                     break;
                 }
             }

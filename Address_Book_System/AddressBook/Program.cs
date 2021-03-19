@@ -56,6 +56,7 @@ namespace AddressBook
 
                     obj.Assign(address_Book, first_Name, last_Name, address, city, state, zip, phone_number, email);
                 }
+                obj.Check_Duplicate(address_Book);
                 obj.Show(address_Book);
 
                 Console.WriteLine("\n Do you want to edit any person Information then reply with 'y' or 'n': ");

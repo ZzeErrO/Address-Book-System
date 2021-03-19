@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using System.Reflection;
 
 namespace AddressBook
 {
@@ -9,6 +10,9 @@ namespace AddressBook
         int var = 0;
         public List<TakeContacts> list = new List<TakeContacts>();
         public static Dictionary<string, TakeContacts> dictionary = new Dictionary<string, TakeContacts>();
+        public static Dictionary<string, List<string>> dict_City = new Dictionary<string, List<string>>();
+        public static Dictionary<string, List<string>> dict_State = new Dictionary<string, List<string>>();
+
         public void Assign(string address_Book, string first_Name, string last_Name, string address, string city, string state, int zip, int phone_number, string email)
         {
             TakeContacts class_object = new TakeContacts();
@@ -35,11 +39,10 @@ namespace AddressBook
                     j++;
                     if (list[temp].FirstName == list[j].FirstName && list[temp].LastName == list[j].LastName)
                     {
-                        Console.WriteLine("hello "+i);
                         delete(list[j].FirstName, list[j].LastName);
                         dictionary.Remove(address_Book + " Person" + j);
                     }
-                    Console.WriteLine("hello "+i);
+                    //Console.WriteLine("hello "+i);
                 }
             }
         }
@@ -114,28 +117,88 @@ namespace AddressBook
             }
         }
 
-        public void search_Person_In_City(string city_Check)
+        public static void search_Person_In_City(string city_Check)
         {
-            Console.WriteLine("Person Name Having " + city_Check + " as ther city is: ");
+            List<string> cityPeoples = new List<string>();
+            //Console.WriteLine("Person Name Having " + state_Check + " as ther state is: ");
             foreach (KeyValuePair<string, TakeContacts> item in dictionary)
             {
                 if (item.Value.City == city_Check)
                 {
-                    Console.WriteLine(item.Value.FirstName+" "+ item.Value.LastName );
+                    cityPeoples.Add(item.Value.FirstName + " " + item.Value.LastName);
                 }
+            }
+
+            try
+            {
+                dict_City.Add(city_Check, cityPeoples);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                //dict_State.Remove(state_Check);
             }
         }
 
-        public void search_Person_In_State(string state_Check)
+        public static void search_Person_In_State(string state_Check)
         {
-            Console.WriteLine("Person Name Having " + state_Check + " as ther state is: ");
+            List<string> statePeoples = new List<string>();
+            //Console.WriteLine("Person Name Having " + state_Check + " as ther state is: ");
             foreach (KeyValuePair<string, TakeContacts> item in dictionary)
             {
                 if (item.Value.State == state_Check)
                 {
-                    Console.WriteLine(item.Value.FirstName + " " + item.Value.LastName);
+                    statePeoples.Add(item.Value.FirstName + " " + item.Value.LastName);
                 }
             }
+
+            try
+            {
+                dict_State.Add(state_Check, statePeoples);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                //dict_State.Remove(state_Check);
+            }
         }
+
+        public void count_By_City_Or_State()
+        {
+
+            foreach (KeyValuePair<string, TakeContacts> item1 in dictionary)
+            {
+                search_Person_In_City(item1.Value.City);
+            }
+            foreach (KeyValuePair<string, List<string>> alpha in dict_City)
+            {
+                Console.WriteLine("City: " + alpha.Key + "\nPerson Names: ");
+                foreach (var item in alpha.Value)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("Number of people in city " + alpha.Key + " is:" + alpha.Value.Count);
+            }
+
+            foreach (KeyValuePair<string, TakeContacts> item1 in dictionary)
+            {
+            
+                search_Person_In_State(item1.Value.State);
+
+            }
+            foreach (KeyValuePair<string, List<string>> beta in dict_State)
+            {
+                Console.WriteLine("State: " + beta.Key + "\nPerson Names: ");
+                foreach (var item in beta.Value)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("Number of people in State " + beta.Key + " is:" + beta.Value.Count);
+            }
+
+
+
+        }
+
     }
 }

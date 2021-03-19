@@ -113,6 +113,29 @@ namespace AddressBook
                     + item.Value.Email + "\n");
             }
         }
-        
+
+        public void search_Person_In_City(string city_Check)
+        {
+            Console.WriteLine("Person Name Having " + city_Check + " as ther city is: ");
+            foreach (KeyValuePair<string, TakeContacts> item in dictionary)
+            {
+                if (item.Value.City == city_Check)
+                {
+                    Console.WriteLine(item.Value.FirstName+" "+ item.Value.LastName );
+                }
+            }
+        }
+
+        public void search_Person_In_State(string state_Check)
+        {
+            Console.WriteLine("Person Name Having " + state_Check + " as ther state is: ");
+            foreach (KeyValuePair<string, TakeContacts> item in dictionary)
+            {
+                if (item.Value.State == state_Check)
+                {
+                    Console.WriteLine(item.Value.FirstName + " " + item.Value.LastName);
+                }
+            }
+        }
     }
 }

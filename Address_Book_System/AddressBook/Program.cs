@@ -22,6 +22,7 @@ namespace AddressBook
 
         static void Main(string[] args)
         {
+            AddContacts obj = new AddContacts();
             Console.WriteLine(" WELCOME TO ADDRESS BOOK SYSTEM PROGRAM \n");
 
             Console.WriteLine("How many Address Book do you want(Expected Integer): ");
@@ -34,8 +35,6 @@ namespace AddressBook
 
                 Console.WriteLine(" How many people's Information is needed to be Added(Expected Integer): ");
                 int NUM_OF_PEOPLE = Convert.ToInt32(Console.ReadLine());
-
-                AddContacts obj = new AddContacts();
 
                 for (int i = 1; i <= NUM_OF_PEOPLE; i++)
                 {
@@ -85,22 +84,25 @@ namespace AddressBook
                     obj.Show(address_Book);
                 }
 
-                Console.WriteLine("\nDo you want any person Information for City or State then reply with 'c' for City, 's' for State or ANYKEY for No Info: ");
-                string c_s= Console.ReadLine();
-                if (c_s == "c")
-                {
-                    Console.WriteLine("Enter the City Name : ");
-                    city_Check = Console.ReadLine();
-                    obj.search_Person_In_City(city_Check);
-                }
-                else
-                {
-                    Console.WriteLine("Enter the State Name : ");
-                    state_Check = Console.ReadLine();
-                    obj.search_Person_In_State(state_Check);
-                }
-
             }
+
+            Console.WriteLine("\n------PRINT THE NUMBER OF PERSONS BY CITY OR STATE------\n");
+
+            Console.WriteLine("\nDo you want any person Information for City or State then reply with 'c' for City, 's' for State or ANYKEY for No Info: ");
+            string c_s = Console.ReadLine();
+            if (c_s == "c")
+            {
+                Console.WriteLine("Enter the City Name : ");
+                city_Check = Console.ReadLine();
+                obj.search_Person_In_City(city_Check);
+            }
+            else if(c_s == "s")
+            {
+                Console.WriteLine("Enter the State Name : ");
+                state_Check = Console.ReadLine();
+                obj.search_Person_In_State(state_Check);
+            }
+
             AddContacts.printall();
             Console.ReadKey();
         }

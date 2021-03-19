@@ -18,12 +18,11 @@ namespace AddressBook
         public static string delete_First_Name;
         public static string delete_Last_Name;
 
-        private static Dictionary<string, TakeContacts> dictionary= new Dictionary<string, TakeContacts>();
         static void Main(string[] args)
         {
             Console.WriteLine(" WELCOME TO ADDRESS BOOK SYSTEM PROGRAM \n");
 
-            Console.WriteLine("How many Address Boook do you want: ");
+            Console.WriteLine("How many Address Book do you want(Expected Integer): ");
             int NUM_OF_ADDRESS_BOOK = Convert.ToInt32(Console.ReadLine());
 
             for (int j = 1; j <= NUM_OF_ADDRESS_BOOK; j++)
@@ -82,11 +81,9 @@ namespace AddressBook
                     obj.delete(delete_First_Name, delete_Last_Name);
                     obj.Show(address_Book);
                 }
-                TakeContacts object1 = new TakeContacts();
-                dictionary.Add(address_Book, object1);
 
             }
-
+            AddContacts.printall();
             Console.ReadKey();
         }
     }

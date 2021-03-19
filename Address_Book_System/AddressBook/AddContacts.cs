@@ -6,7 +6,9 @@ namespace AddressBook
 {
     class AddContacts
     {
+        int var = 1;
         public List<TakeContacts> list = new List<TakeContacts>();
+        public static Dictionary<string, TakeContacts> dictionary = new Dictionary<string, TakeContacts>();
         public void Assign(string address_Book, string first_Name, string last_Name, string address, string city, string state, int zip, int phone_number, string email)
         {
             TakeContacts class_object = new TakeContacts();
@@ -18,8 +20,9 @@ namespace AddressBook
             class_object.Zip = zip;
             class_object.Phone_number = phone_number;
             class_object.Email = email;
-
             list.Add(class_object);
+            dictionary.Add(address_Book + " Person" + var,class_object);
+            var++;
         }
 
         public void Show(string address_Book)
@@ -75,5 +78,21 @@ namespace AddressBook
                 }
             }
         }
+        public static void printall()
+        {
+            foreach (KeyValuePair<string, TakeContacts> item in dictionary)
+            {
+                Console.WriteLine("Dictionary Name: "+ item.Key + "\nInformation: "
+                    + item.Value.FirstName + "\n"
+                    + item.Value.LastName + "\n"
+                    + item.Value.Address + "\n"
+                    + item.Value.City+ "\n"
+                    + item.Value.State + "\n"
+                    + item.Value.Zip + "\n"
+                    + item.Value.Phone_number + "\n"
+                    + item.Value.Email + "\n");
+            }
+        }
+        
     }
 }

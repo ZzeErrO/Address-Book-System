@@ -105,15 +105,16 @@ namespace AddressBook
         {
             foreach (KeyValuePair<string, TakeContacts> item in dictionary)
             {
-                Console.WriteLine("Dictionary Name: "+ item.Key + "\nInformation: "
-                    + item.Value.FirstName + "\n"
-                    + item.Value.LastName + "\n"
-                    + item.Value.Address + "\n"
-                    + item.Value.City+ "\n"
-                    + item.Value.State + "\n"
-                    + item.Value.Zip + "\n"
-                    + item.Value.Phone_number + "\n"
-                    + item.Value.Email + "\n");
+                Console.WriteLine("Dictionary Name: "+ item.Key + "\nInformation: \n");
+
+                Console.WriteLine("The first Name of person is: " + item.Value.FirstName);
+                Console.WriteLine("The last name of the person is: " + item.Value.LastName);
+                Console.WriteLine("The Address of the person is: " + item.Value.Address);
+                Console.WriteLine("The city of the person is: " + item.Value.City);
+                Console.WriteLine("The State of the person is: " + item.Value.State);
+                Console.WriteLine("The zip od the person is: " + item.Value.Zip);
+                Console.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
+                Console.WriteLine("The email of the person is: " + item.Value.Email + "\n");
             }
         }
 
@@ -195,8 +196,21 @@ namespace AddressBook
                 }
                 Console.WriteLine("Number of people in State " + beta.Key + " is:" + beta.Value.Count);
             }
+        }
 
-
+        public void Sort_By_Name(string toSort)
+        {
+            SortedList<string, TakeContacts> sort = new SortedList<string, TakeContacts>();
+            foreach (TakeContacts item in list)
+            {
+                sort.Add(item.FirstName + " "+ item.LastName, item);
+            }
+            int incr = 0;
+            foreach (var item in sort)
+            {
+                list[incr] = item.Value ;
+                incr++;
+            }
 
         }
 

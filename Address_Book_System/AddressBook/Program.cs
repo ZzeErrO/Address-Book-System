@@ -58,6 +58,10 @@ namespace AddressBook
                     obj.Assign(address_Book, first_Name, last_Name, address, city, state, zip, phone_number, email);
                 }
                 obj.Check_Duplicate(address_Book);
+
+                string Name = first_Name + last_Name;
+                obj.Sort_By_Name(Name);
+                
                 obj.Show(address_Book);
 
                 Console.WriteLine("\n Do you want to edit any person Information then reply with 'y' or 'n': ");
@@ -87,21 +91,6 @@ namespace AddressBook
             }
 
             Console.WriteLine("\n------PRINT THE NUMBER OF PERSONS BY CITY OR STATE------\n");
-
-            //Console.WriteLine("\nDo you want any person Information for City or State then reply with 'c' for City, 's' for State or ANYKEY for No Info: ");
-            //string c_s = Console.ReadLine();
-            //if (c_s == "c")
-            //{
-            //    Console.WriteLine("Enter the City Name : ");
-            //    city_Check = Console.ReadLine();
-            //    //obj.search_Person_In_City(city_Check);
-            //}
-            //else if(c_s == "s")
-            //{
-            //    Console.WriteLine("Enter the State Name : ");
-            //    state_Check = Console.ReadLine();
-            //    //obj.search_Person_In_State(state_Check);
-            //}
 
             obj.count_By_City_Or_State();
 

@@ -214,5 +214,85 @@ namespace AddressBook
 
         }
 
+        public void Sort(string toSort)
+        {
+            SortedList<object, TakeContacts> sort = new SortedList<object, TakeContacts>();
+            if (toSort == "c")
+            {
+                foreach (TakeContacts item in list)
+                {
+                    try 
+                    {
+                        sort.Add(item.City, item);
+
+                    }
+                    catch(Exception ex)
+                    { Console.WriteLine(ex.Message); }
+                }
+                Console.WriteLine("------SORTING BY CITY------");
+                foreach (var item in sort)
+                {
+                    Console.WriteLine("City is: "+item.Key + " ===>>\n");
+                    Console.WriteLine("The first Name of person is: " + item.Value.FirstName);
+                    Console.WriteLine("The last name of the person is: " + item.Value.LastName);
+                    Console.WriteLine("The Address of the person is: " + item.Value.Address);
+                    Console.WriteLine("The State of the person is: " + item.Value.State);
+                    Console.WriteLine("The zip od the person is: " + item.Value.Zip);
+                    Console.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
+                    Console.WriteLine("The email of the person is: " + item.Value.Email + "\n");
+                }
+
+            }
+            else if (toSort == "s")
+            {
+                foreach (TakeContacts item in list)
+                {
+                    try
+                    {
+                        sort.Add(item.State, item);
+
+                    }
+                    catch (Exception ex)
+                    { Console.WriteLine(ex.Message); }
+                }
+                Console.WriteLine("------SORTING BY STATE------");
+                foreach (var item in sort)
+                {
+                    Console.WriteLine("State is: "+item.Key + " ===>>\n");
+                    Console.WriteLine("The first Name of person is: " + item.Value.FirstName);
+                    Console.WriteLine("The last name of the person is: " + item.Value.LastName);
+                    Console.WriteLine("The Address of the person is: " + item.Value.Address);
+                    Console.WriteLine("The zip od the person is: " + item.Value.Zip);
+                    Console.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
+                    Console.WriteLine("The email of the person is: " + item.Value.Email + "\n");
+                }
+            }
+            else if (toSort == "z")
+            {
+                foreach (TakeContacts item in list)
+                {
+                    try
+                    {
+                        sort.Add(item.Zip, item);
+
+                    }
+                    catch (Exception ex)
+                    { Console.WriteLine(ex.Message); }
+                }
+                Console.WriteLine("------SORTING BY ZIP------");
+                foreach (var item in sort)
+                {
+                    Console.WriteLine("Zip is: " + item.Key + " ===>>\n");
+                    Console.WriteLine("The first Name of person is: " + item.Value.FirstName);
+                    Console.WriteLine("The last name of the person is: " + item.Value.LastName);
+                    Console.WriteLine("The Address of the person is: " + item.Value.Address);
+                    Console.WriteLine("The zip od the person is: " + item.Value.Zip);
+                    Console.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
+                    Console.WriteLine("The email of the person is: " + item.Value.Email + "\n");
+                }
+            }
+
+        }
+
     }
 }

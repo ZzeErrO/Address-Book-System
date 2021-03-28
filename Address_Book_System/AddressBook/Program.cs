@@ -59,7 +59,7 @@ namespace AddressBook
                 }
                 obj.Check_Duplicate(address_Book);
 
-                string Name = first_Name + last_Name;
+                string Name = first_Name +" "+ last_Name;
                 obj.Sort_By_Name(Name);
                 
                 obj.Show(address_Book);
@@ -90,9 +90,15 @@ namespace AddressBook
 
             }
 
+            Console.WriteLine("\n Do you want to Sort by City(press c), State(press s) or Zip(press z), if not then press any other button: ");
+            string c_s_z = Console.ReadLine();
+            obj.Sort(c_s_z);
+
             Console.WriteLine("\n------PRINT THE NUMBER OF PERSONS BY CITY OR STATE------\n");
 
             obj.count_By_City_Or_State();
+
+            Console.WriteLine("\n\n ADDRESS BOOKS INFORMATION \n\n");
 
             AddContacts.printall();
             Console.ReadKey();

@@ -1,0 +1,48 @@
+Dictionary Name: dict1 Person0
+Information: 
+
+The first Name of person is: efgg
+The last name of the person is: rg
+The Address of the person is: sfgvv
+The city of the person is: erg
+The State of the person is: srrg
+The zip od the person is: 35295
+The phone number of the person is: 54654
+The email of the person is: dfgv
+
+Dictionary Name: dict1 Person1
+Information: 
+
+The first Name of person is: sfgvvre
+The last name of the person is: srf
+The Address of the person is: sfv
+The city of the person is: srgg
+The State of the person is: sfg
+The zip od the person is: 65545
+The phone number of the person is: 241545
+The email of the person is: dfb
+
+Dictionary Name: dict2 Person2
+Information: 
+
+The first Name of person is: erv
+The last name of the person is: erv
+The Address of the person is: erv
+The city of the person is: rgf
+The State of the person is: rf
+The zip od the person is: 21164
+The phone number of the person is: 54654
+The email of the person is: srf
+
+Dictionary Name: dict2 Person3
+Information: 
+
+The first Name of person is: sss
+The last name of the person is: sf
+The Address of the person is: tg
+The city of the person is: ergt
+The State of the person is: ertg
+The zip od the person is: 54654
+The phone number of the person is: 21644
+The email of the person is: rg
+

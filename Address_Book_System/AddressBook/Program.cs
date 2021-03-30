@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AddressBook
 {
@@ -19,6 +20,20 @@ namespace AddressBook
         public static string delete_Last_Name;
         //public static string city_Check;
         //public static string state_Check;
+        public static void ReadText()
+        {
+            String path = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook.txt";
+
+            using (StreamReader sr = File.OpenText(path))
+            {
+                String s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+        }
+
 
         static void Main(string[] args)
         {
@@ -100,7 +115,9 @@ namespace AddressBook
 
             Console.WriteLine("\n\n ADDRESS BOOKS INFORMATION \n\n");
 
-            AddContacts.printall();
+            AddContacts.printAll_WriteText_InFile();
+            ReadText();
+
             Console.ReadKey();
         }
     }

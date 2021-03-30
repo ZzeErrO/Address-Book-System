@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.IO;
 
 namespace AddressBook
 {
@@ -101,20 +102,32 @@ namespace AddressBook
                 }
             }
         }
-        public static void printall()
+        public static void printAll_WriteText_InFile()
         {
+
+            String path = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook.txt";
+
+
             foreach (KeyValuePair<string, TakeContacts> item in dictionary)
             {
-                Console.WriteLine("Dictionary Name: "+ item.Key + "\nInformation: \n");
 
-                Console.WriteLine("The first Name of person is: " + item.Value.FirstName);
-                Console.WriteLine("The last name of the person is: " + item.Value.LastName);
-                Console.WriteLine("The Address of the person is: " + item.Value.Address);
-                Console.WriteLine("The city of the person is: " + item.Value.City);
-                Console.WriteLine("The State of the person is: " + item.Value.State);
-                Console.WriteLine("The zip od the person is: " + item.Value.Zip);
-                Console.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
-                Console.WriteLine("The email of the person is: " + item.Value.Email + "\n");
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine("Dictionary Name: " + item.Key + "\nInformation: \n");
+
+                    sw.WriteLine("The first Name of person is: " + item.Value.FirstName);
+                    sw.WriteLine("The last name of the person is: " + item.Value.LastName);
+                    sw.WriteLine("The Address of the person is: " + item.Value.Address);
+                    sw.WriteLine("The city of the person is: " + item.Value.City);
+                    sw.WriteLine("The State of the person is: " + item.Value.State);
+                    sw.WriteLine("The zip od the person is: " + item.Value.Zip);
+                    sw.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
+                    sw.WriteLine("The email of the person is: " + item.Value.Email + "\n");
+
+
+                    sw.Close();
+                    //Console.WriteLine(File.ReadAllText(path));
+                }
             }
         }
 
@@ -290,6 +303,7 @@ namespace AddressBook
                     Console.WriteLine("The phone number of the person is: " + item.Value.Phone_number);
                     Console.WriteLine("The email of the person is: " + item.Value.Email + "\n");
                 }
+
             }
 
         }

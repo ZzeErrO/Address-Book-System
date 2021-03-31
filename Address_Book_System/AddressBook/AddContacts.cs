@@ -102,6 +102,7 @@ namespace AddressBook
                 }
             }
         }
+
         public static void printAll_WriteText_InFile()
         {
 
@@ -308,5 +309,15 @@ namespace AddressBook
 
         }
 
+
+        public void CSV()
+        {
+            AddressBookCsv.Implement_CSV(list);
+        }
+
+        public void CSVRead()
+        {
+            AddressBookCsv.Implement_CSV_Read();
+        }
     }
 }

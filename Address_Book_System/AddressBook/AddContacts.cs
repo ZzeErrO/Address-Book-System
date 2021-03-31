@@ -319,5 +319,10 @@ namespace AddressBook
         {
             AddressBookCsv.Implement_CSV_Read();
         }
+
+        public void CSVReadJSON()
+        {
+            AddressBookWriteJSON.ImplementCSVToJSONAndRead();
+        }
     }
 }

@@ -320,9 +320,14 @@ namespace AddressBook
             AddressBookCsv.Implement_CSV_Read();
         }
 
+        public void JSON()
+        {
+            AddressBookWriteJSON.ImplementJSON(list);
+        }
+
         public void CSVReadJSON()
         {
-            AddressBookWriteJSON.ImplementCSVToJSONAndRead();
+            AddressBookWriteJSON.ImplementJSONAndRead();
         }
     }
 }

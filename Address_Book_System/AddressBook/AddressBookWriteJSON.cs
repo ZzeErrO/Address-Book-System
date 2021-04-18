@@ -12,28 +12,20 @@ namespace AddressBook
 {
     class AddressBookWriteJSON
     {
-        public static void ImplementCSVToJSON()
+        public static void ImplementJSON(List<TakeContacts> list)
         {
-            string importFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBook.csv";
-            string exportFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBookJSON.csv";
-            using (var reader = new StreamReader(importFilePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                var records = csv.GetRecords<TakeContacts>().ToList();
+            //string importFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBook.csv";
+            string exportFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBookJSON.json";
 
-                JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter sw = new StreamWriter(exportFilePath))
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Serialize(writer, records);
-                }
-            }
+            string jsonData = JsonConvert.SerializeObject(list);
+
+            File.WriteAllText(exportFilePath, JsonConvert.SerializeObject(list));
 
         }
 
-        public static void ImplementCSVToJSONAndRead()
+        public static void ImplementJSONAndRead()
         {
-            string FilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBookJSON.csv";
+            string FilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBookJSON.json";
 
             using (StreamReader sr = File.OpenText(FilePath))
             {
@@ -42,6 +34,7 @@ namespace AddressBook
                 {
                     Console.WriteLine(s);
                 }
+                sr.Close();
             }
             
         }

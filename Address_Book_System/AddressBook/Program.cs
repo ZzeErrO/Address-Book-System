@@ -127,7 +127,7 @@ namespace AddressBook
                 obj.CSVRead();
             }
 
-            AddressBookWriteJSON.ImplementCSVToJSON();
+            obj.JSON();
             Console.WriteLine("Do you want to read the JSON Content of CSV File to display on Console (Type 'y' or 'n' for yes or no respectively): ");
             string y_n_json = Console.ReadLine();
 

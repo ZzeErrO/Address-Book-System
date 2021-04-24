@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using CsvHelper;
 using Newtonsoft.Json;
 
-namespace AddressBook
+namespace Address_Book
 {
     class AddressBookWriteJSON
     {
         public static void ImplementJSON(List<TakeContacts> list)
         {
             //string importFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBook.csv";
-            string exportFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBookJSON.json";
+            string exportFilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\Address_Book\\Utility\\AddressBookJSON.json";
 
             string jsonData = JsonConvert.SerializeObject(list);
 
@@ -25,7 +25,7 @@ namespace AddressBook
 
         public static void ImplementJSONAndRead()
         {
-            string FilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook\\Utility\\AddressBookJSON.json";
+            string FilePath = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\Address_Book\\Utility\\AddressBookJSON.json";
 
             using (StreamReader sr = File.OpenText(FilePath))
             {

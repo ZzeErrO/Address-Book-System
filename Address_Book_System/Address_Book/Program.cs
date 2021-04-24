@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AddressBook
+namespace Address_Book
 {
-    class Program
+    public class Program
     {
         public static string first_Name;
         public static string last_Name;
@@ -20,22 +23,24 @@ namespace AddressBook
         public static string delete_Last_Name;
         //public static string city_Check;
         //public static string state_Check;
-        public static void ReadText()
-        {
-            String path = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook.txt";
-
-            using (StreamReader sr = File.OpenText(path))
-            {
-                String s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(s);
-                }
-            }
-        }
-
 
         static void Main(string[] args)
+        {
+            //UC1 To UC15
+            AddValuesInConsoleOrPlayWithFiles();
+
+            //UC16 To UC20
+            ADONET();
+
+            Console.ReadKey();
+        }
+
+        public static void ADONET()
+        {
+            ADO_NET.getAllData();
+        }
+
+        public static void AddValuesInConsoleOrPlayWithFiles()
         {
             AddContacts obj = new AddContacts();
             Console.WriteLine(" WELCOME TO ADDRESS BOOK SYSTEM PROGRAM \n");
@@ -74,9 +79,9 @@ namespace AddressBook
                 }
                 obj.Check_Duplicate(address_Book);
 
-                string Name = first_Name +" "+ last_Name;
+                string Name = first_Name + " " + last_Name;
                 obj.Sort_By_Name(Name);
-                
+
                 obj.Show(address_Book);
 
                 Console.WriteLine("\n Do you want to edit any person Information then reply with 'y' or 'n': ");
@@ -135,9 +140,21 @@ namespace AddressBook
             {
                 obj.CSVReadJSON();
             }
-
-
-            Console.ReadKey();
         }
+
+        public static void ReadText()
+        {
+            String path = "C:\\Users\\Prashik Jaware\\source\\repos\\Address_Book\\Address_Book_System\\AddressBook.txt";
+
+            using (StreamReader sr = File.OpenText(path))
+            {
+                String s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+        }
+
     }
 }

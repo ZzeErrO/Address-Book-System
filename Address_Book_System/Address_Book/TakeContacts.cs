@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AddressBook
+namespace Address_Book
 {
     public class TakeContacts
     {
@@ -11,8 +11,7 @@ namespace AddressBook
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
-        public int Phone_number { get; set; }
+        public long Phone_number { get; set; }
         public string Email { get; set; }
-
     }
 }

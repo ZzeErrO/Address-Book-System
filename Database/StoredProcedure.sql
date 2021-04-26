@@ -39,6 +39,36 @@ update employee_names set joinDate = '2019-05-01' where id = 2
 
 select * from employee_names where joinDate between '2020-01-01' and '2021-05-01'
 
+select * from employee_names where city = 'Earth'
+
+select * from employee_names where state = 'Maharashtra'
+
+
+create proc AddContactInformation
+@id int,
+@firstname varchar(20),
+@lastname varchar(20),
+@address varchar(40),
+@city varchar(20),
+@state varchar(20),
+@zip int,
+@phonenumber bigint,
+@email varchar(40),
+@date DateTime,
+@addressbookname varchar(40)
+as
+begin
+insert into employee_names values
+(
+@firstname,@lastname,@address,@city,@state,@zip,@phonenumber,@email,@date
+)
+
+insert into AddressBooks values
+(
+@addressbookname,@id
+)
+end
+
 
 select * from employee_names
 select * from AddressBooks

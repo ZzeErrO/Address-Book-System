@@ -307,5 +307,94 @@ namespace Address_Book
                 Connection.Close();
             }
         }
+
+        public static bool addContactInformation(TakeContacts contact, AddressBookName book)
+        {
+            SqlConnection Connection = ConnectionSetup();
+            try
+            {
+                using (Connection)
+                {
+                    TakeContacts take = new TakeContacts();
+                    AddressBookName name = new AddressBookName();
+                    SqlCommand command = new SqlCommand("AddContactInformation", Connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@id", contact.Empid);
+                    command.Parameters.AddWithValue("@firstname", contact.FirstName);
+                    command.Parameters.AddWithValue("@lastname", contact.LastName);
+                    command.Parameters.AddWithValue("@address", contact.Address);
+                    command.Parameters.AddWithValue("@city", contact.City);
+                    command.Parameters.AddWithValue("@state", contact.State);
+                    command.Parameters.AddWithValue("@zip", contact.Zip);
+                    command.Parameters.AddWithValue("@phonenumber", contact.Phone_number);
+                    command.Parameters.AddWithValue("@email", contact.Email);
+                    command.Parameters.AddWithValue("@date", contact.Date);
+                    command.Parameters.AddWithValue("@addressbookname", book.Address_Book_Name);
+
+                    Connection.Open();
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            take.Empid = Convert.ToInt32(dr["Empid"]);
+                            take.FirstName = dr["firstname"].ToString();
+                            take.LastName = dr["lastname"].ToString();
+                            take.Address = dr["address"].ToString();
+                            take.City = dr["city"].ToString();
+                            take.State = dr["state"].ToString();
+                            take.Zip = Convert.ToInt32(dr["zip"]);
+                            take.Phone_number = Convert.ToInt32(dr["phone_number"]);
+                            take.Email = dr["email"].ToString();
+                            take.Date = dr.GetDateTime(9);
+                            name.Address_Book_Name = dr["addressBookName"].ToString();
+
+                            Console.WriteLine(" " +
+                                take.FirstName + " "
+                                + take.LastName + " "
+                                + take.Address + " "
+                                + take.City + " "
+                                + take.State + " "
+                                + take.Zip + " "
+                                + take.Phone_number + " "
+                                + take.Email);
+
+                            if
+                            (
+                            take.FirstName == contact.FirstName &&
+                            take.LastName == contact.LastName &&
+                            take.Address == contact.Address &&
+                            take.City == contact.City &&
+                            take.State == contact.State &&
+                            take.Zip == contact.Zip &&
+                            take.Phone_number == contact.Phone_number &&
+                            take.Email == contact.Email &&
+                            take.Date == contact.Date &&
+                            name.Address_Book_Name == book.Address_Book_Name
+                            )
+                            {
+                                return true;
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return false;
+        }
     }
 }

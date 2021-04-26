@@ -169,5 +169,58 @@ namespace Address_Book
             return false;
         }
 
+        public static void dataInAParticularPeriod()
+        {
+            SqlConnection Connection = ConnectionSetup();
+            try
+            {
+                using (Connection)
+                {
+                    string query = @"select * from employee_names where joinDate between '2020-01-01' and '2021-05-01'";
+                    SqlCommand command = new SqlCommand(query, Connection);
+                    Connection.Open();
+                    SqlDataReader dr = command.ExecuteReader();
+                    TakeContacts take = new TakeContacts();
+                    Console.WriteLine("----------TABLE FOR QUERY----------");
+                    Console.WriteLine("select * from employee_names where joinDate between '2020-01-01' and '2021-05-01'");
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            //model.EmployeeId = dr.GetInt32(0);
+                            take.FirstName = dr.GetString(1);
+                            take.LastName = dr.GetString(2);
+                            take.Address = dr.GetString(3);
+                            take.City = dr.GetString(4);
+                            take.State = dr.GetString(5);
+                            take.Zip = dr.GetInt32(6);
+                            take.Phone_number = dr.GetInt64(7);
+                            take.Email = dr.GetString(8);
+                            Console.WriteLine(" " +
+                                take.FirstName + " "
+                                + take.LastName + " "
+                                + take.Address + " "
+                                + take.City + " "
+                                + take.State + " "
+                                + take.Zip + " "
+                                + take.Phone_number + " "
+                                + take.Email);
+
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+
     }
 }

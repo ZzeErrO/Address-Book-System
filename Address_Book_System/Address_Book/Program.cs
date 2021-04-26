@@ -27,7 +27,7 @@ namespace Address_Book
         static void Main(string[] args)
         {
             //UC1 To UC15
-            AddValuesInConsoleOrPlayWithFiles();
+            //AddValuesInConsoleOrPlayWithFiles();
 
             //UC16 To UC20
             ADONET();
@@ -37,7 +37,10 @@ namespace Address_Book
 
         public static void ADONET()
         {
+            //  UC16
             ADO_NET.getAllData();
+            // UC17
+            ADO_NET.dataInAParticularPeriod();
         }
 
         public static void AddValuesInConsoleOrPlayWithFiles()

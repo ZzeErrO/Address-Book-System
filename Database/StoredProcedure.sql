@@ -2,12 +2,12 @@ use Address_Book_System
 
 insert into employee_names values
 (
-'ABC','XYZ','ALPHABET','STARTEND','CHARACTER',1226,123262524,'alphabate@yahoo.com'
+'ABC','XYZ','ALPHABET','STARTEND','CHARACTER',1226,123262524,'alphabate@yahoo.com','2020-09-09'
 )
 
 insert into AddressBooks values
 (
-'Address2','2'
+'Address2','3'
 )
 
 create proc UpdateContactInformation
@@ -30,6 +30,14 @@ update AddressBooks set addressBookName = @addressbookname where id = @id
 end
 
 exec UpdateContactInformation @id=2,@firstname='ABC',@lastname='XYZ',@address='ALPHABET',@city='STARTEND',@state='CHARACTER',@zip=1226,@phonenumber=123262524,@email='alphabate@yahoo.com',@addressbookname='address1'
+
+alter table employee_names add joinDate DateTime null
+
+update employee_names set joinDate = '2017-11-30' where id = 1
+
+update employee_names set joinDate = '2019-05-01' where id = 2
+
+select * from employee_names where joinDate between '2020-01-01' and '2021-05-01'
 
 
 select * from employee_names

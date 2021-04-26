@@ -222,5 +222,90 @@ namespace Address_Book
             }
         }
 
+        public static void contactInDatabaseByCityOrState()
+        {
+            SqlConnection Connection = ConnectionSetup();
+            try
+            {
+                using (Connection)
+                {
+                    string query = @"select * from employee_names where city = 'Earth'";
+                    SqlCommand command = new SqlCommand(query, Connection);
+                    Connection.Open();
+                    SqlDataReader dr = command.ExecuteReader();
+                    TakeContacts take = new TakeContacts();
+                    Console.WriteLine("----------INFORMATION FOR BELOW QUERY----------");
+                    Console.WriteLine("select * from employee_names where city = 'Earth'");
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            //model.EmployeeId = dr.GetInt32(0);
+                            take.FirstName = dr.GetString(1);
+                            take.LastName = dr.GetString(2);
+                            take.Address = dr.GetString(3);
+                            take.City = dr.GetString(4);
+                            take.State = dr.GetString(5);
+                            take.Zip = dr.GetInt32(6);
+                            take.Phone_number = dr.GetInt64(7);
+                            take.Email = dr.GetString(8);
+                            Console.WriteLine(" " +
+                                take.FirstName + " "
+                                + take.LastName + " "
+                                + take.Address + " "
+                                + take.City + " "
+                                + take.State + " "
+                                + take.Zip + " "
+                                + take.Phone_number + " "
+                                + take.Email);
+
+                        }
+                    }
+
+                    Connection.Close();
+
+                    string query1 = @"select * from employee_names where state = 'Maharashtra'";
+                    SqlCommand command1 = new SqlCommand(query1, Connection);
+                    Connection.Open();
+                    SqlDataReader dr1 = command1.ExecuteReader();
+
+                    Console.WriteLine("----------INFORMATION FOR BELOW QUERY----------");
+                    Console.WriteLine("select * from employee_names where state = 'Maharashtra'");
+                    if (dr1.HasRows)
+                    {
+                        while (dr1.Read())
+                        {
+                            //model.EmployeeId = dr.GetInt32(0);
+                            take.FirstName = dr1.GetString(1);
+                            take.LastName = dr1.GetString(2);
+                            take.Address = dr1.GetString(3);
+                            take.City = dr1.GetString(4);
+                            take.State = dr1.GetString(5);
+                            take.Zip = dr1.GetInt32(6);
+                            take.Phone_number = dr1.GetInt64(7);
+                            take.Email = dr1.GetString(8);
+                            Console.WriteLine(" " +
+                                take.FirstName + " "
+                                + take.LastName + " "
+                                + take.Address + " "
+                                + take.City + " "
+                                + take.State + " "
+                                + take.Zip + " "
+                                + take.Phone_number + " "
+                                + take.Email);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
     }
 }

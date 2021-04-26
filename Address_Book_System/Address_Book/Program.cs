@@ -39,8 +39,10 @@ namespace Address_Book
         {
             //  UC16
             ADO_NET.getAllData();
-            // UC17
+            // UC18
             ADO_NET.dataInAParticularPeriod();
+            //UC19
+            ADO_NET.contactInDatabaseByCityOrState();
         }
 
         public static void AddValuesInConsoleOrPlayWithFiles()
